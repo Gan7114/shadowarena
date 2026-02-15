@@ -72,7 +72,7 @@ export const ShadowFighter: React.FC = () => {
                 Set <code>VITE_SHADOW_FIGHTER_URL</code> to your live Shadowfighter server URL.
               </p>
               <p className="text-gray-500 text-sm">
-                Example local run: <code>cd ../shadowfighter && npm run dev</code>
+                Example local run: <code>cd ./shadowfighter && npm run dev</code>
               </p>
             </div>
           </div>

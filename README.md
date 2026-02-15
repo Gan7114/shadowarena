@@ -23,5 +23,6 @@ View your app in AI Studio: https://ai.studio/apps/drive/1qtEhpfBlVjpYwsEv5syqXM
 
 `/fighter` embeds Shadow Fighter through `VITE_SHADOW_FIGHTER_URL`.
 
-- For local multiplayer testing, run the Shadow Fighter server separately and point the env var to that URL.
+- This repo now includes the standalone server game at `/shadowfighter`.
+- For local multiplayer testing, run `npm run dev:shadowfighter` (from this repo) and point `VITE_SHADOW_FIGHTER_URL` to that URL.
 - On static Vercel deployments, host the Shadow Fighter WebSocket server separately, then set `VITE_SHADOW_FIGHTER_URL`.

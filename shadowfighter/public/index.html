@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shadowfighter: Deep Galaxy Dogfight</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas" aria-label="Shadowfighter game canvas"></canvas>
+
+      <div id="menu-overlay" class="overlay visible">
+        <div class="menu-card">
+          <p class="eyebrow">Neon-Cosmic PvP Arena</p>
+          <h1>SHADOWFIGHTER</h1>
+          <p class="subtitle">
+            6-player server-authoritative space dogfight in a deep-galaxy combat arena.
+          </p>
+
+          <div class="inputs">
+            <label>
+              Pilot Name
+              <input id="name-input" maxlength="18" value="Pilot" />
+            </label>
+
+            <label>
+              Mode
+              <select id="mode-select">
+                <option value="battle-royale" selected>Battle Royale (Primary)</option>
+                <option value="team-war">3v3 Team War</option>
+                <option value="ranked-duel">Ranked Duel (2 players)</option>
+                <option value="tournament">Tournament Bracket</option>
+              </select>
+            </label>
+          </div>
+
+          <button id="start-btn">Launch Fighter</button>
+
+          <div class="controls-grid">
+            <p><strong>Move:</strong> W/S thrust, A/D strafe, R/G lift</p>
+            <p><strong>Aim:</strong> Arrow keys, click-drag, or two-finger trackpad pan + Q/E barrel roll</p>
+            <p><strong>Boost:</strong> Shift</p>
+            <p><strong>Plasma:</strong> Left click or J</p>
+            <p><strong>Missile:</strong> Right click / two-finger click or K (hold O/L to overcharge)</p>
+            <p><strong>Warp Dash:</strong> Z blind / X stable</p>
+            <p><strong>Gravity Shift:</strong> C</p>
+            <p><strong>Gravity Pulse:</strong> H (energy pull field)</p>
+            <p><strong>Camera Mode:</strong> V (TPP/FPP cockpit view)</p>
+            <p><strong>Quick Turn:</strong> Space</p>
+            <p><strong>Lock Target:</strong> T</p>
+            <p><strong>Refill Energy:</strong> B</p>
+            <p><strong>Fullscreen:</strong> F</p>
+          </div>
+
+          <p id="status-text" class="status">Ready.</p>
+        </div>
+      </div>
+
+      <div id="hud">
+        <div id="hud-top"></div>
+        <div id="hud-bottom"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./game.js"></script>
+  </body>
+</html>
