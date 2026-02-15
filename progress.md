@@ -1,0 +1,101 @@
+Original prompt: you make it to much complex to users and for judges i want to see there Prediction Market (ShadowPredictionMarket) and Market State ... add the tv at bottom prediction market right side vote and time was on tv same as in imposter game make it propesional type
+
+- Reworked `InferenceArena` to a judge-friendly structure.
+- Kept full contract wiring, moved advanced actions into collapsed `Advanced Operator Controls`.
+- Added right-side `ShadowPredictionMarket` card with visible market state and user position.
+- Added bottom `Live Match TV` with phase/game timers and vote focus leaderboard.
+- Added market game-id selector with default fallback to `1` so market state is always visible.
+
+TODO / follow-up:
+- Validate in browser that panel proportions look good on 1366px and mobile widths.
+- If needed, add color coding for phase transitions in Live TV.
+- Added explicit `Market State` sub-section title inside the `ShadowPredictionMarket` panel.
+- Added empty-state copy when no market exists for selected game: prompts user to start match and place bets.
+- Re-ran `npm run build` in `shadow-arena` after edits; build passes.
+
+TODO / follow-up:
+- Wire local chain (RPC + deployed contracts) before judge demo so market panel resolves from live on-chain state instead of empty-state.
+- Tried required skill check with `/Users/nexus/.codex/skills/develop-web-game/scripts/web_game_playwright_client.js` after latest UI edit.
+- Playwright client run failed in this environment due Chromium launch permission error (`mach_port_rendezvous ... Permission denied (1100)`), so verification falls back to successful `npm run build`.
+- Replaced `InferenceArena` with a judge-focused layout.
+- Removed sections per user request: `Connection + Contracts`, `Quick Match Controls`, `Round Actions`, and `Advanced Operator Controls`.
+- Pinned market address to `0x5700d5f755954c65e85fd2b2ffd456d0328e979d` for ShadowPredictionMarket.
+- Upgraded left side to big-screen `Live Match TV` with large timers, vote focus, trend chart, and agent table.
+- Restyled right side to a cleaner Polymarket-like trade card (Citizens/Spies pricing, amount, Trade button, Market State, Your Position).
+- Re-ran `npm run build`; passing.
+- Post-change Playwright client run attempted and blocked again by Chromium sandbox permission (`mach_port_rendezvous ... Permission denied (1100)`).
+- Removed timer/watch blocks from `Live Match TV` and kept only small `Broadcast latency: ~3.2s refresh loop` text.
+- Removed `ShadowPredictionMarket` wording from the shadow page labels.
+- Changed prediction trade amount to fixed `1 MON` and removed variable quick amount buttons.
+- Removed navbar labels/status chips from layout: `Nodes`, `DAO`, `Market`, `ONLINE`, `SYNC`.
+- Updated shared `GameCard` layout to remove `ONLINE` badge so Shadow and Imposters cards stay visually consistent.
+- Re-ran `npm run build`; passing.
+- Playwright client run remains blocked in this environment (`mach_port_rendezvous ... Permission denied (1100)`).
+- Removed `Broadcast latency: ~3.2s refresh loop` text from the live TV header.
+- Removed full `Vote Momentum` panel from the shadow live screen.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Added wallet toggle behavior: if address is shown, tapping the wallet button now disconnects locally.
+- Added compact `Phase Timer` and `Match Timer` chips above the `Live Match TV` title.
+- Updated empty Market State copy to explain vote flow: place a 1 MON bet on Citizens/Spies to populate state.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Replaced right-panel market stats block with in-game `Game Vote System` controls.
+- Added live vote target selector from current non-eliminated agents and wired `castVote` transaction.
+- Kept prediction market trading above vote controls.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Removed remaining market stats card (`Bet Position`) and left only vote-system-focused copy in the right panel lower section.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Applied the same simplified InferenceArena-style UI to `ImpostersGame` while keeping Imposters-specific names and transaction logic.
+- Reworked Imposters page to: top summary cards, left `Live Match TV` player board, right prediction panel + on-chain game voting panel.
+- Preserved Imposters logic calls: `market.bet(...)` and `game.vote(...)` (including skip vote via `ZERO_ADDRESS`).
+- Added wallet button toggle behavior (connect/disconnect locally) and kept auto-refresh.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted on `/#/imposters`; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Added local-AI fallback in `lib/gemini.ts`.
+- If Gemini key is missing/placeholder, text generation now tries local API (`VITE_LOCAL_AI_BASE_URL`, Ollama-compatible `/api/generate`) and then static fallback text.
+- Avatar generation now falls back to local image API (`VITE_LOCAL_IMAGE_API_URL`, Automatic1111-compatible `/sdapi/v1/txt2img`) and then deterministic local SVG avatar.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Added player onboarding guidance to both Shadow and Imposters pages (`How Agents Play` / `How Players Play`).
+- Shadow: reintroduced minimal player controls in right panel: `Register Agent`, `Submit Statement`, and existing `Cast Vote`.
+- Shadow vote now uses `safeAddress` on selected target and reads stake from on-chain config for register amount.
+- Imposters: added minimal player action controls: `Join Game (1 MON)`, `Move`, `Perform Task`, and `Report Body`, while preserving existing `market.bet` and `game.vote` logic.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Updated both Shadow and Imposters dashboards to human-only interaction model.
+- Removed game-action buttons from both pages (register/join/move/task/report/vote/statement controls removed from UI).
+- Kept live match feed panels for observation.
+- Kept prediction market interactions for humans and added explicit claim buttons:
+  - Shadow: `market.claimPayout(currentGameId)`
+  - Imposters: `market.claim()`
+- Updated copy to indicate agents run game logic off-dashboard.
+- Re-ran `npm run build`; passing.
+- Playwright client check attempted; still blocked by Chromium permission issue (`mach_port_rendezvous ... Permission denied (1100)`).
+- Removed always-visible `How Players Play` / `How Agents Play` blocks from both game pages.
+- Added a bottom text toggle button `how to play game` under the Live Match TV in both pages; clicking reveals the gameplay guide.
+- Enlarged Live Match TV layout for both pages:
+  - Switched split to `xl:grid-cols-[3fr_1fr]`.
+  - Increased board section to `min-h-[700px]`.
+  - Increased feed area to `min-h-[560px]` with larger scroll window.
+- Restored richer prediction market state views without adding any human game-vote controls:
+  - Shadow: added `Market State` block (citizen pool, spy pool, total pool, open/settled status) while keeping Trade/Claim and user position.
+  - Imposters: added `Market State` data via `getMarketState(currentMarketId)` + `getBetCountForMarket(currentMarketId)` and displayed pool/shares/bets/status/winner.
+- Re-ran `npm run build`; passing.
+- Re-ran required `develop-web-game` Playwright client; still blocked by Chromium launch permission (`mach_port_rendezvous ... Permission denied (1100)`).
+- Wired the home `SHADOW FIGHTER` game card (`/fighter`) to the real Shadowfighter app instead of the placeholder combat mock.
+- Replaced `components/ShadowFighter.tsx` with an embedded launcher page that:
+  - Loads `import.meta.env.VITE_SHADOW_FIGHTER_URL` (fallback `http://127.0.0.1:5173`) inside an iframe.
+  - Provides `Return_To_Arena` navigation and `Open_Standalone` external-link fallback.
+  - Shows loading and error states for the embedded game endpoint.
+- Updated Home card copy in `components/HomePage.tsx`:
+  - Title changed to `SHADOW FIGHTER`.
+  - Description/stats updated from `COMING SOON` to live game messaging.
+- Re-ran `npm run build` in `shadow-arena`; build passes.
+- Playwright client run attempted against `http://127.0.0.1:4173/#/fighter` after starting local preview, but Chromium launch is blocked in this environment (`mach_port_rendezvous ... Permission denied (1100)`).
+- Removed hardcoded local Shadowfighter URL fallback from `components/ShadowFighter.tsx`.
+- Shadowfighter embed now requires `VITE_SHADOW_FIGHTER_URL`; when unset it shows a clear configuration message instead of silently targeting localhost.
+- Updated `lib/contracts.ts` RPC fallbacks from localhost to `https://rpc.monad.xyz`.
+- Project cleanup: removed generated local artifacts (`shadowfighter/output`, `shadow-arena/dist`, `shadow-arena/output`) and stray `.DS_Store` files.

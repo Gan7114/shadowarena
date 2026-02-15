@@ -1,0 +1,62 @@
+/* Shared stylesheet placeholder. Tailwind utilities and component styles are loaded from index.html and component classes. */
+
+@layer utilities {
+  .animate-border-spin {
+    animation: border-spin 4s linear infinite;
+  }
+
+  .holographic-card {
+    background: rgba(6, 182, 212, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.1), inset 0 0 20px rgba(6, 182, 212, 0.05);
+  }
+}
+
+@keyframes border-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.8), 0 0 40px rgba(6, 182, 212, 0.5);
+  }
+}
+
+.glow-hover:hover {
+  animation: glow-pulse 2s infinite;
+}
+
+/* Scanline Effect */
+.scanline-overlay {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+  background-size: 100% 4px;
+  animation: scanline 0.2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 0% 100%;
+  }
+}
