@@ -166,11 +166,11 @@ const HomePage: React.FC = () => {
             id="04"
             title={<GlitchText text="SHADOW FIGHTER" speed={20} />}
             uniqueKey="SHADOW_FIGHTER"
-            description="Deep-galaxy dogfight simulation. Launch directly into the live arena."
+            description="Free-to-play deep-galaxy dogfight. Plug into a live server for multiplayer battles."
             color="yellow"
             icon={Swords}
             path="/fighter"
-            stats={[<GlitchText text="LIVE FEED" speed={10} />, <GlitchText text="6 PILOTS" speed={10} />]}
+            stats={[<GlitchText text="FREE PLAY" speed={10} />, <GlitchText text="MULTIPLAYER" speed={10} />]}
           />
         </GlowWrapper>
       </section>
